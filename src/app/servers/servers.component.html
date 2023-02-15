@@ -10,7 +10,9 @@ class="form-control"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
 <!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ ServerCreationStatus }}</p>
+<!-- <p>{{ ServerCreationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer><p>No server was created!</p></ng-template>
 <app-server></app-server>
 <app-server></app-server>
 
@@ -19,3 +21,5 @@ class="form-control"
 <!-- (click)="onCreateServer()" => stiamo usando l' "Event Binding" per affidare al click di un btn un particolare evento -->
 <!-- (input)="onUpdateServerName($event)" => andiamo a passare ed utilizzare dei dati attraverso l'Event Binding -->
 <!-- [(ngModel)]="serverName" => Binding bidirezionale -->
+<!--  *ngIf="serverCreated => andiamo a creare l'ngIf - l'asterisco alla fine indica che si tratta di una direttiva strutturale, che modifica realmente il DOM -->
+<!-- <ng-template #noServer> => direttiva locale utile a creare l'else (che va richiamato nella scrittura precedente aggiungendo "; else noServer") -->

@@ -1,4 +1,16 @@
-<button class="btn btn-primary" [disabled]="!allowNewServer">Add Server</button> <!-- Le parentesi quadre indicano ad Angular che stiamo usando la "Property Binding" per collegare dinamicamente alcune proprietà -->
-<p [innerText]="allowNewServer"></p>
+<label>Server Name</label>
+<input type="text"
+class="form-control"
+(input)="onUpdateServerName($event)">
+<p>{{ serverName }}</p>
+<button class="btn btn-primary"
+[disabled]="!allowNewServer"
+(click)="onCreateServer()">Add Server</button>
+<!-- <p [innerText]="allowNewServer"></p> -->
+<p>{{ ServerCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
+
+<!-- {{ ServerCreationStatus }} => stiamo utilizzado la "String Interpolation" per stampare a video una stringa che può essere modificata dinamicamente -->
+<!-- [disabled]="!allowNewServer" => stiamo usando la "Property Binding" per collegare dinamicamente alcune proprietà -->
+<!-- (click)="onCreateServer()" => stiamo usando l' "Event Binding" per affidare al click di un btn un particolare evento -->
